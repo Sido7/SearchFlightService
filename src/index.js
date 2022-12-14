@@ -1,12 +1,9 @@
 const express = require('express')
-
-function setUpServer (){
+const {Port} = require('./config/serverconfig')
+async function setUpServer (){
     const app = express()
-    
-    const port = 3000
-
-    app.listen(port,()=>{
-        console.log("server started at port"+port)
+    app.listen(Port,()=>{
+        console.log("server started at port"+Port)
     })
 }
 
