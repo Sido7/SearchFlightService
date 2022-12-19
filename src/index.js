@@ -11,7 +11,7 @@ async function setUpServer (){
     app.use(bodyparser.json)
     app.use(bodyparser.urlencoded({extended:true}))
 
-    app.listen(Port,()=>{
+    app.listen(Port,async()=>{
         console.log("server started at port "+Port)
     })
 }
