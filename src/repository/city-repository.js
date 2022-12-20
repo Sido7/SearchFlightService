@@ -6,6 +6,7 @@ class CityRepository{
              const city = await City.create({name})
              return city;
         }catch(error){
+            console.log("error at repository layer")
             throw {error};
         }
     }
@@ -19,6 +20,7 @@ class CityRepository{
             })
             return true
         }catch(err){
+            console.log("error at repository layer")
             throw {error};
         }
 
@@ -28,12 +30,13 @@ class CityRepository{
         try{
             const city = City.update(data,{
                 where: {
-                    id:cityID
+                    id: cityID
                 }
             })
             return city
 
         }catch(error){
+            console.log("error at repository layer")
            throw {error}
         }
     }
@@ -43,6 +46,7 @@ class CityRepository{
             const city = City.findByPk(cityId)
             return city;
         }catch(error){
+            console.log("error at repository layer")
            throw {error}
         }
     }

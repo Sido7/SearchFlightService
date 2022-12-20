@@ -1,4 +1,4 @@
-const cityRepository = require('../repository/index')
+const {cityRepository} = require('../repository/index')
 
 class CityService{
     constructor(){
@@ -9,7 +9,7 @@ class CityService{
             const city = await this.cityRepository.createCity(data)
             return city; 
         }catch(error){
-            console.log("undable to create a city")
+            console.log("undable to create a city,at service layer")
             throw {error}
         }
      
@@ -19,7 +19,7 @@ class CityService{
             const response = await this.cityRepository.deleteCity(cityId)
             return response;
         }catch(error){
-            console.log("undable to delete a city")
+            console.log("undable to delete a city,at service layer")
             throw {error}
         }
 
@@ -29,7 +29,7 @@ class CityService{
             const city = await this.cityRepository.updateCity(cityId,data)
             return city
         }catch(error){
-            console.log("undable to update  a city")
+            console.log("undable to update  a city,at service layer")
             throw {error}
         }
 
@@ -40,7 +40,7 @@ class CityService{
             return city;
 
         }catch(error){
-            console.log("undable to get a city")
+            console.log("undable to get a city,at service layer")
             throw {error}
         }
 
