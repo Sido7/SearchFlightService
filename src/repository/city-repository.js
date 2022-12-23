@@ -11,7 +11,7 @@ class CityRepository{
         }
     }
 
-    async deleteCity({ cityId }){
+    async deleteCity( cityId ){
         try{
            await City.destroy({
                 where:{
@@ -28,11 +28,17 @@ class CityRepository{
 
     async updateCity({cityId,data}){
         try{
-            const city = City.update(data,{
-                where: {
-                    id: cityID
-                }
-            })
+            // this Approach also works but does not return the updated cities.
+            // const city = await City.update(data,{
+            //     where: {
+            //         id: cityId
+            //     }
+                
+            // })
+             // this Approach also works and return the updated cities
+            const city = await City.findByPk(cityId)
+            city.name = data.name
+            await city.save()
             return city
 
         }catch(error){
@@ -41,9 +47,9 @@ class CityRepository{
         }
     }
 
-    async getCity({cityId}){
+    async getCity(cityId){
         try{
-            const city = City.findByPk(cityId)
+            const city = await City.findByPk(cityId)
             return city;
         }catch(error){
             console.log("error at repository layer")
