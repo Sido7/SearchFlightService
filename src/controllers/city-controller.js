@@ -92,4 +92,28 @@ const get = async (req,res)=>{
     }
 }
 
-module.exports = {create,destroy,update,get}
+const allCities = async (req,res)=>{
+    try{
+        const cities = await cityService.getAllCity(req.query)
+    return res.status(200).json({
+            data: cities,
+            success: true,
+            message: "Successfully found  the city",
+            err: {} 
+    })
+    }catch(error){
+        console.log(error)
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Could not find the city",
+            err: error
+        })
+
+    }
+}
+
+
+
+
+module.exports = {create,destroy,update,get,allCities}

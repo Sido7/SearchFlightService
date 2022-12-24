@@ -7,6 +7,8 @@ routes.post('/city',cityController.create)
 
 routes.get('/city/:id',cityController.get)
 
+routes.get('/city',cityController.allCities)
+
 routes.patch('/city/:id',cityController.update)
 
 routes.delete('/city/:id',cityController.destroy)
