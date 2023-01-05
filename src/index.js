@@ -3,8 +3,11 @@ const bodyparser = require('body-parser')
 
 
 
-const {Port} = require('./config/serverconfig')
+const {Port,dbSync} = require('./config/serverconfig')
 const v1ApiRoutes = require('./routes/index')
+
+const db = require('./models/index')
+//const city = require('./models/city')
 
 
 
@@ -16,6 +19,11 @@ async function setUpServer(){
     app.use(bodyparser.urlencoded({extended:true}))
 
     app.use('/api',v1ApiRoutes)
+     
+    if(dbSync)
+    {
+        await db.sequelize.sync({ alter: true })
+    }
 
     app.listen(Port,async()=>{
         console.log("server started at port "+Port)
