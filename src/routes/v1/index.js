@@ -16,5 +16,7 @@ routes.delete('/city/:id',cityController.destroy)
 
 routes.post('/flights',flightController.create)
 
+routes.get('/flights',flightController.getAll)
+
 
 module.exports = routes

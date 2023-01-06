@@ -23,6 +23,28 @@ class flightService {
         }
     }
 
+    async getFlight(flightId){
+        try{
+           
+
+        }catch(error){
+            console.log("Not able to get a particular Flight at Service Layer")
+            throw{error}
+        }
+    }
+
+    async getAllFlightData(data){
+        try{
+            console.log(data)
+            const flight = await this.flightRepository.getAllFlight(data)
+            return flight;
+        }catch(error){
+            console.log("Not able to get all Flight at Service Layer")
+            throw{error}
+        }
+
+    }
+
 }
 
 module.exports = flightService
