@@ -16,12 +16,10 @@ class FlightRepository{
         const priceFilter = []
         if(data.minPrice)
         {
-            //Object.assign(filter,{price: {[Op.gte]: data.minPrice}})
             priceFilter.push({[Op.gte]: data.minPrice})
         }
          if(data.maxPrice)
          {
-           //  Object.assign(filter,{price: {[Op.lte]: data.maxPrice}})
              priceFilter.push({[Op.lte]: data.maxPrice})
          }
          Object.assign(filter,{price: {[Op.and]: priceFilter}})
@@ -50,7 +48,6 @@ class FlightRepository{
 
     async getAllFlight(data){
         try{
-           // console.log(data)
             const filterObject = await this.#createFilter(data)
             const flights = await Flight.findAll({
                 where : filterObject
