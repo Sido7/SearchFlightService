@@ -1,4 +1,4 @@
 node_modules/
 .env
 src/config/config.json
-practice.js
+src/practice.js
