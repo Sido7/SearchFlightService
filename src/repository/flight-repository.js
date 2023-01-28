@@ -38,10 +38,23 @@ class FlightRepository{
 
     async getFlight(flightId){
         try{
-            const flight = await Flight.findById(flightId)
+            const flight = await Flight.findByPk(flightId)
             return flight;
         }catch(error){
             console.log("Not able to get a particular Flight at Repository Layer")
+            throw{error}
+        }
+    }
+
+    async updateFlight(flightId,data){
+        try{
+            const flight = await Flight.findByPk(flightId)
+            flight.totalSeats = data.totalSeats
+            await flight.save()
+            return flight
+        }
+        catch(error){
+            console.log("Not able to update the Flight at Repository Layer")
             throw{error}
         }
     }

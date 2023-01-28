@@ -40,6 +40,7 @@ const create = async (req,res) => {
 
 const getAll = async (req,res) => {
     try{
+        console.log("from getall",req.params)
         const flight = await flightService.getAllFlightData(req.query)
         return res.status(SuccessCodes.OK).json({
             data: flight,
@@ -61,7 +62,46 @@ const getAll = async (req,res) => {
 
 }
 
+const getOne = async (req,res)=>{
+    try{
+        const flight = await flightService.getFlight(req.params.id)
+        return res.status(200).json({
+            data: flight,
+            message: "successfully found the flight",
+            err: {}
+        })
+
+    }catch(error){
+        console.log(error)
+        return res.status(500).json({
+            data: {},
+            message: "could not find the flight with given id",
+            err: error
+        })
+    }
+}
+
+const update = async (req,res)=>{
+    try{
+        const response = await flightService.updateFlight(req.params.id,req.body)
+        return res.status(200).json({
+            data: response,
+            message: "successfully updated the flight",
+            err: {}
+        })
+    }catch(error){
+        console.log(error)
+        return res.status(500).json({
+            data: {},
+            message: "could not update the flight with given id",
+            err: error
+        })
+    }
+}
+
 module.exports = { 
     create,
-    getAll
+    getAll,
+    getOne,
+    update
 }

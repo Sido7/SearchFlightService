@@ -7,6 +7,7 @@ const cityController = require('../../controllers/city-controller')
 const flightController = require('../../controllers/flight-controller')
 const airportController = require('../../controllers/airport-controller')
 
+
 routes.post('/city',cityController.create)
 
 routes.get('/city/:id',cityController.get)
@@ -18,6 +19,10 @@ routes.patch('/city/:id',cityController.update)
 routes.delete('/city/:id',cityController.destroy)
 
 routes.post('/flights',flightMiddleware.validateCreateFlight,flightController.create)
+
+routes.get('/flights/:id', flightController.getOne)
+
+routes.patch('/flights/:id',flightController.update)
 
 routes.get('/flights',flightController.getAll)
 
